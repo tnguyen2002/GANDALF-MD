@@ -1,0 +1,57 @@
+Loading training set...
+/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/torch/utils/data/sampler.py:64: UserWarning: `data_source` argument is not used and will be removed in 2.2.0.You may still have custom implementation that utilizes it.
+  warnings.warn("`data_source` argument is not used and will be removed in 2.2.0."
+
+Num images:  100
+Image shape: [3, 256, 256]
+Label shape: [0]
+
+Constructing networks...
+Traceback (most recent call last):
+  File "/Users/tnguyen/Documents/CS236/VMDGan/DiffAugment-stylegan2-pytorch/train.py", line 554, in <module>
+    main() # pylint: disable=no-value-for-parameter
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/click/core.py", line 1157, in __call__
+    return self.main(*args, **kwargs)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/click/core.py", line 1078, in main
+    rv = self.invoke(ctx)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/click/core.py", line 1434, in invoke
+    return ctx.invoke(self.callback, **ctx.params)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/click/core.py", line 783, in invoke
+    return __callback(*args, **kwargs)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/click/decorators.py", line 33, in new_func
+    return f(get_current_context(), *args, **kwargs)
+  File "/Users/tnguyen/Documents/CS236/VMDGan/DiffAugment-stylegan2-pytorch/train.py", line 547, in main
+    subprocess_fn(rank=0, args=args, temp_dir=temp_dir)
+  File "/Users/tnguyen/Documents/CS236/VMDGan/DiffAugment-stylegan2-pytorch/train.py", line 398, in subprocess_fn
+    training_loop.training_loop(rank=rank, **args)
+  File "/Users/tnguyen/Documents/CS236/VMDGan/DiffAugment-stylegan2-pytorch/training/training_loop.py", line 150, in training_loop
+    G = dnnlib.util.construct_class_by_name(**G_kwargs, **common_kwargs).train().requires_grad_(False).to(device) # subclass of torch.nn.Module
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1160, in to
+    return self._apply(convert)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    module._apply(fn)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    module._apply(fn)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 810, in _apply
+    module._apply(fn)
+  [Previous line repeated 1 more time]
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 833, in _apply
+    param_applied = fn(param)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1158, in convert
+    return t.to(device, dtype if t.is_floating_point() or t.is_complex() else None, non_blocking)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/torch/cuda/__init__.py", line 289, in _lazy_init
+    raise AssertionError("Torch not compiled with CUDA enabled")
+AssertionError: Torch not compiled with CUDA enabled
+Exception ignored in atexit callback: <function _exit_function at 0x106cb6680>
+Traceback (most recent call last):
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/multiprocessing/util.py", line 357, in _exit_function
+    p.join()
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/multiprocessing/process.py", line 149, in join
+    res = self._popen.wait(timeout)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/multiprocessing/popen_fork.py", line 43, in wait
+    return self.poll(os.WNOHANG if timeout == 0.0 else 0)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/multiprocessing/popen_fork.py", line 27, in poll
+    pid, sts = os.waitpid(self.pid, flag)
+  File "/Users/tnguyen/anaconda3/envs/VMDGan/lib/python3.10/site-packages/torch/utils/data/_utils/signal_handling.py", line 66, in handler
+    _error_if_any_worker_fails()
+RuntimeError: DataLoader worker (pid 29712) is killed by signal: Terminated: 15. 
