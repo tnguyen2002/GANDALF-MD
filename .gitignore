@@ -9,3 +9,8 @@ dataset/
 .pyc
 __pycache__
 training-runs/
+diffaug_exp/
+experiments/
+gridimgnew/
+MNIST/
+noisedata/
