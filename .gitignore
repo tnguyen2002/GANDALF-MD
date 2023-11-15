@@ -1,1 +1,11 @@
 .DS_Store
+*DS_Store*
+.vscode
+wandb
+.log
+.npy
+data/
+dataset/
+.pyc
+__pycache__
+training-runs/

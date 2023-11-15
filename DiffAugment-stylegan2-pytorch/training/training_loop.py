@@ -121,7 +121,9 @@ def training_loop(
 ):
     # Initialize.
     start_time = time.time()
-    device = torch.device('cuda', rank)
+    # XILUO EDITED 
+    # device = torch.device('cuda', rank)
+    device = torch.device('cuda', 3)
     np.random.seed(random_seed * num_gpus + rank)
     torch.manual_seed(random_seed * num_gpus + rank)
     torch.backends.cudnn.benchmark = cudnn_benchmark    # Improves training speed.
