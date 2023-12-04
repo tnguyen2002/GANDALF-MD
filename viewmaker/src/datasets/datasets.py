@@ -7,7 +7,7 @@ from src.datasets.cifar10 import CIFAR10, CIFAR10Corners, CIFAR10Shapes, CIFAR10
 
 from src.datasets.mura import MURA
 from src.datasets.pcam import PCAM
-from src.datasets.ham import HAM
+from src.datasets.ham import HAM, HAM_semisupervised
 from src.datasets.pannuke import PanNuke
 from src.datasets.drd import DRD
 from src.datasets.idrid import IDRiD
@@ -49,7 +49,8 @@ DATASET = {
     'pannuke': PanNuke,
     'drd': DRD,
     'idrid': IDRiD,
-    'celeba': CelebA
+    'celeba': CelebA,
+    'ham_generated_and_real_diffaug':HAM_semisupervised
 }
 
 
@@ -193,7 +194,8 @@ def load_default_transforms(dataset):
             transforms.Normalize(mean=mean, std=std),
         ])
    # elif dataset == "mura" or dataset == "pcam" or dataset == "ham" or dataset == "pannuke" or dataset == "drd" or dataset =='idrid':
-    elif dataset == 'celeba':
+
+    elif dataset == 'celeba' or 'ham' in dataset:
         train_transforms = transforms.Compose([
             transforms.RandomResizedCrop(32, scale=(0.2, 1.)),
             transforms.RandomApply([
