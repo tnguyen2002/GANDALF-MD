@@ -10,7 +10,7 @@ from src.datasets.pcam import PCAM
 from src.datasets.ham import HAM
 from src.datasets.pannuke import PanNuke
 from src.datasets.drd import DRD
-from src.datasets.idrid import IDRiD
+from src.datasets.idrid import IDRiD, PretrainIDRiD_DA, PretrainIDRiD_LDA
 
 from src.datasets.celeba import CelebA
 
@@ -49,6 +49,8 @@ DATASET = {
     'pannuke': PanNuke,
     'drd': DRD,
     'idrid': IDRiD,
+    'pt_idrid_da': PretrainIDRiD_DA,
+    'pt_idrid_lda': PretrainIDRiD_LDA,
     'celeba': CelebA
 }
 
@@ -193,7 +195,7 @@ def load_default_transforms(dataset):
             transforms.Normalize(mean=mean, std=std),
         ])
    # elif dataset == "mura" or dataset == "pcam" or dataset == "ham" or dataset == "pannuke" or dataset == "drd" or dataset =='idrid':
-    elif dataset == 'celeba':
+    elif dataset == 'celeba' or 'idrid' in dataset:
         train_transforms = transforms.Compose([
             transforms.RandomResizedCrop(32, scale=(0.2, 1.)),
             transforms.RandomApply([

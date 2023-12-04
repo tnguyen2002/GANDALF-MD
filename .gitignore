@@ -14,3 +14,9 @@ experiments/
 gridimgnew/
 MNIST/
 noisedata/
+viewmaker_models/
+out/
+root_paths.py
+setup.py
+run_image.py
+DiffAugment_pytorch.py

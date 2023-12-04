@@ -20,6 +20,7 @@ DATA_ROOTS = {
     'HAM': '/data5/xiluohe/HAM',
     'PanNuke': '/data5/xiluohe/PanNuke',
     'DRD': '/data5/xiluohe/diabetic-retinopathy-detection',
-    'IDRiD': '/data5/xiluohe/IDRiD',
+    'IDRiD': '/home/xiluohe/VMDGan/dataset/IDRiD',
+    'PT_IDRiD': '/home/xiluohe/VMDGan/DiffAugment-stylegan2-pytorch/out',
     'CelebA': '/data5/xiluohe/CelebA'
 } 

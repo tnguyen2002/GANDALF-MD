@@ -12,7 +12,7 @@ from logging.handlers import RotatingFileHandler
 
 from src.utils.utils import load_json, save_json
 
-DEFAULT_EXP_BASE = os.path.join(os.path.dirname(__file__), '/mnt/fs2/atamkin/feature_suppression_xiluo/')
+DEFAULT_EXP_BASE = os.path.join(os.path.dirname(__file__), '/home/xiluohe/VMDGan/viewmaker_models/gan_trained_vm_models/')
 
 
 def makedirs(dir_list):
