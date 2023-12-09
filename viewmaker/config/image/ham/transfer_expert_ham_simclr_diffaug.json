@@ -15,7 +15,7 @@
 	"resnet_small": true
     },
     "pretrain_model": {
-        "exp_dir": "/home/anhn/experiments/Ham_diffaug_simclr",
+        "exp_dir": "~/experiments/Ham_diffaug_simclr",
         "checkpoint_name": "epoch=199.ckpt"
     },
     "optim_params": {
