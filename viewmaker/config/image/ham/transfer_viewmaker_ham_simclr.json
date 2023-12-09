@@ -14,7 +14,7 @@
 	"resnet_small": true
     },
     "pretrain_model": {
-        "exp_dir": "/mnt/fs0/atamkin/feature_suppression_xiluo/experiments/pretrain_viewmaker_ham_budget_0_003125/",
+        "exp_dir": "~/experiments/pretrain_viewmaker_ham_budget_0_003125/",
         "checkpoint_name": "epoch=199.ckpt"
     },
     "optim_params": {
