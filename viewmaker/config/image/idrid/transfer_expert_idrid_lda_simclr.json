@@ -15,7 +15,7 @@
 	"resnet_small": true
     },
     "pretrain_model": {
-        "exp_dir": "/mnt/fs0/atamkin/feature_suppression_xiluo/experiments/pretrain_expert_idrid_orig_gan_vmdiffaug/",
+        "exp_dir": "~/experiments/pretrain_expert_idrid_orig_gan_vmdiffaug/",
         "checkpoint_name": "epoch=199.ckpt"
     },
     "optim_params": {
