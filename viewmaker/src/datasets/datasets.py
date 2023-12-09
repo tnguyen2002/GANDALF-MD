@@ -3,54 +3,38 @@ import random
 from torchvision import transforms
 from PIL import ImageFilter, Image
 
-from src.datasets.cifar10 import CIFAR10, CIFAR10Corners, CIFAR10Shapes, CIFAR10Digits, CIFAR10Letters, CIFAR10ShapesManualFeatureDropout, CIFAR10LettersManualFeatureDropout, CIFAR10DigitsManualFeatureDropout
+from src.datasets.cifar10 import CIFAR10, CIFAR10Corners
 
+<<<<<<< HEAD
 from src.datasets.mura import MURA
 from src.datasets.pcam import PCAM
 from src.datasets.ham import HAM, HAM_semisupervised
 from src.datasets.pannuke import PanNuke
 from src.datasets.drd import DRD
 from src.datasets.idrid import IDRiD
+=======
+from src.datasets.ham import HAM
+from src.datasets.pannuke import PanNuke, PretrainPanNuke_DA, PretrainPanNuke_LDA
+from src.datasets.idrid import IDRiD, PretrainIDRiD_DA, PretrainIDRiD_LDA
+>>>>>>> 57a4f69eece16dd147b44f7342b633c1b556825a
 
-from src.datasets.celeba import CelebA
-
-from src.datasets.meta_datasets.aircraft import Aircraft
-from src.datasets.meta_datasets.cu_birds import CUBirds
-from src.datasets.meta_datasets.dtd import DTD
-from src.datasets.meta_datasets.fashionmnist import FashionMNIST
-from src.datasets.meta_datasets.fungi import Fungi
-from src.datasets.meta_datasets.mnist import MNIST
-from src.datasets.meta_datasets.mscoco import MSCOCO as MSCOCO2
-from src.datasets.meta_datasets.traffic_sign import TrafficSign
-from src.datasets.meta_datasets.vgg_flower import VGGFlower
 from src.datasets.data_statistics import get_data_mean_and_stdev
 
 DATASET = {
     'cifar10': CIFAR10,
-    'cifar10shapes': CIFAR10Shapes,
-    'cifar10shapesmanualfeaturedropout': CIFAR10ShapesManualFeatureDropout,
-    'cifar10digits': CIFAR10Digits,
-    'cifar10digitsmanualfeaturedropout':CIFAR10DigitsManualFeatureDropout,
-    'cifar10letters': CIFAR10Letters,
-    'cifar10lettersmanualfeaturedropout': CIFAR10LettersManualFeatureDropout,
     'cifar10_corners': CIFAR10Corners,
-    'meta_aircraft': Aircraft,
-    'meta_cu_birds': CUBirds,
-    'meta_dtd': DTD,
-    'meta_fashionmnist': FashionMNIST,
-    'meta_fungi': Fungi,
-    'meta_mnist': MNIST,
-    'meta_mscoco': MSCOCO2,
-    'meta_traffic_sign': TrafficSign,
-    'meta_vgg_flower': VGGFlower,
-    'mura': MURA,
-    'pcam': PCAM,
     'ham': HAM,
     'pannuke': PanNuke,
-    'drd': DRD,
+    'pt_pannuke_da': PretrainPanNuke_DA,
+    'pt_pannuke_lda': PretrainPanNuke_LDA,
     'idrid': IDRiD,
+<<<<<<< HEAD
     'celeba': CelebA,
     'ham_generated_and_real_diffaug':HAM_semisupervised
+=======
+    'pt_idrid_da': PretrainIDRiD_DA,
+    'pt_idrid_lda': PretrainIDRiD_LDA,
+>>>>>>> 57a4f69eece16dd147b44f7342b633c1b556825a
 }
 
 
@@ -69,21 +53,6 @@ def get_image_datasets(
     train_transforms, test_transforms = load_transforms(
         dataset=dataset_name, 
     )
-    
-    if 'manualfeaturedropout' in dataset_name:
-        train_dataset = DATASET[dataset_name](
-            train=True,
-            image_transforms=train_transforms,
-            alternate_label=alternate_label,
-            feat_dropout_prob=feat_dropout_prob
-        )
-        val_dataset = DATASET[dataset_name](
-            train=False,
-            image_transforms=test_transforms,
-            alternate_label=alternate_label,
-            feat_dropout_prob=feat_dropout_prob
-        )
-        return train_dataset, val_dataset
 
     train_dataset = DATASET[dataset_name](
         train=True,
@@ -107,20 +76,6 @@ def get_image_datasets_val(
     train_transforms, test_transforms = load_transforms(
         dataset=dataset_name, 
     )
-    if 'manualfeaturedropout' in dataset_name:
-        train_dataset = DATASET[dataset_name](
-            train=True,
-            image_transforms=train_transforms,
-            alternate_label=alternate_label,
-            feat_dropout_prob=feat_dropout_prob
-        )
-        val_dataset = DATASET[dataset_name](
-            train=False,
-            image_transforms=train_transforms,
-            alternate_label=alternate_label,
-            feat_dropout_prob=feat_dropout_prob
-        )
-        return train_dataset, val_dataset
     
     train_dataset = DATASET[dataset_name](
         train=True,
@@ -138,17 +93,6 @@ def load_image_transforms(dataset):
     if 'cifar' in dataset:
         train_transforms = transforms.ToTensor()
         test_transforms = transforms.ToTensor()
-    elif dataset in ['mscoco'] or 'meta_' in dataset or dataset == 'pcam':
-        train_transforms = transforms.Compose([
-            transforms.Resize(32),
-            transforms.CenterCrop(32),
-            transforms.ToTensor(),
-        ])
-        test_transforms = transforms.Compose([
-            transforms.Resize(32),
-            transforms.CenterCrop(32),
-            transforms.ToTensor(),
-        ])
     else:
         return None, None
 
@@ -174,6 +118,7 @@ def load_default_transforms(dataset):
             transforms.Normalize(mean=[0.491, 0.482, 0.446],
                                 std=[0.247, 0.243, 0.261]),
         ])
+<<<<<<< HEAD
     elif dataset in ['mscoco'] or 'meta_' in dataset:
         mean, std = get_data_mean_and_stdev(dataset)
         train_transforms = transforms.Compose([
@@ -196,6 +141,9 @@ def load_default_transforms(dataset):
    # elif dataset == "mura" or dataset == "pcam" or dataset == "ham" or dataset == "pannuke" or dataset == "drd" or dataset =='idrid':
 
     elif dataset == 'celeba' or 'ham' in dataset:
+=======
+    elif 'idrid' in dataset or 'ham' in dataset or 'pannuke' in dataset:
+>>>>>>> 57a4f69eece16dd147b44f7342b633c1b556825a
         train_transforms = transforms.Compose([
             transforms.RandomResizedCrop(32, scale=(0.2, 1.)),
             transforms.RandomApply([
@@ -233,22 +181,6 @@ def load_default_unnorm_transforms(dataset, **kwargs):
             transforms.ToTensor(),
         ])
         test_transforms = transforms.ToTensor()
-    elif dataset in ['mscoco'] or 'meta_' in dataset:
-        train_transforms = transforms.Compose([
-            transforms.RandomResizedCrop(32, scale=(0.2, 1.)),
-            transforms.RandomApply([
-                transforms.ColorJitter(0.4, 0.4, 0.4, 0.1)  # not strengthened
-            ], p=0.8),
-            transforms.RandomGrayscale(p=0.2),
-            transforms.RandomApply([GaussianBlur([.1, 2.])], p=0.5),
-            # transforms.RandomHorizontalFlip(),
-            transforms.ToTensor(),
-        ])
-        test_transforms = transforms.Compose([
-            transforms.Resize(32),
-            transforms.CenterCrop(32),
-            transforms.ToTensor(),
-        ])
     else:
         return None, None
 

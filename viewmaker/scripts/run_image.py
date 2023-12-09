@@ -1,5 +1,7 @@
 import os
 from copy import deepcopy
+import sys
+sys.path.append('~/VMDGan/viewmaker')
 from src.systems import image_systems
 from src.utils.utils import load_json
 from src.utils.setup import process_config
@@ -64,7 +66,7 @@ def run(args, gpu_device=None):
         save_top_k=-1,
         period=1,
     )
-    wandb.init(project='image', name=config.exp_name, config=config, sync_tensorboard=True)
+    wandb.init(project='xiluo-runs', name=config.exp_name, config=config, sync_tensorboard=True)
     trainer = pl.Trainer(
         default_root_dir=config.exp_dir,
         gpus=gpu_device,

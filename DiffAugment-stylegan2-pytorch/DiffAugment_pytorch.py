@@ -9,12 +9,12 @@ import dotmap
 from dotmap import DotMap
 import os
 import sys
-sys.path.append('/home/xiluohe/vm-gan/VMDGan/viewmaker')
+sys.path.append('/home/xiluohe/VMDGan/viewmaker')
 from src.systems.image_systems import PretrainViewMakerSystem
 from src.utils import utils
 import warnings
 
-base_dir='/mnt/fs0/atamkin/feature_suppression_xiluo/experiments/pretrain_viewmaker_idrid_rev2_budget_0_1/'
+base_dir='/home/xiluohe/VMDGan/viewmaker_models/vm_ckpts/pretrain_viewmaker_idrid_rev2_budget_0_1/'
 config_path = os.path.join(base_dir, 'config.json')
 config_json = utils.load_json(config_path)
 config = DotMap(config_json)

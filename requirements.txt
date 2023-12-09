@@ -14,3 +14,4 @@ tqdm
 pyspng 
 ninja 
 imageio-ffmpeg==0.4.3
+numpy==1.23.4
