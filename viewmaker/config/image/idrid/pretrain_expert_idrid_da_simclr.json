@@ -1,6 +1,6 @@
 {
     "exp_base": null,
-    "exp_name": "pretrain_expert_idrid_gan_diffaug",
+    "exp_name": "pretrain_expert_idrid_orig_gan_diffaug",
     "system": "PretrainExpertSystem",
     "cuda": true,
     "distributed_backend": "ddp",
