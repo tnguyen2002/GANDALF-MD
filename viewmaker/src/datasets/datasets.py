@@ -5,18 +5,9 @@ from PIL import ImageFilter, Image
 
 from src.datasets.cifar10 import CIFAR10, CIFAR10Corners
 
-<<<<<<< HEAD
-from src.datasets.mura import MURA
-from src.datasets.pcam import PCAM
 from src.datasets.ham import HAM, HAM_semisupervised
-from src.datasets.pannuke import PanNuke
-from src.datasets.drd import DRD
-from src.datasets.idrid import IDRiD
-=======
-from src.datasets.ham import HAM
 from src.datasets.pannuke import PanNuke, PretrainPanNuke_DA, PretrainPanNuke_LDA
 from src.datasets.idrid import IDRiD, PretrainIDRiD_DA, PretrainIDRiD_LDA
->>>>>>> 57a4f69eece16dd147b44f7342b633c1b556825a
 
 from src.datasets.data_statistics import get_data_mean_and_stdev
 
@@ -28,13 +19,9 @@ DATASET = {
     'pt_pannuke_da': PretrainPanNuke_DA,
     'pt_pannuke_lda': PretrainPanNuke_LDA,
     'idrid': IDRiD,
-<<<<<<< HEAD
-    'celeba': CelebA,
     'ham_generated_and_real_diffaug':HAM_semisupervised
-=======
     'pt_idrid_da': PretrainIDRiD_DA,
     'pt_idrid_lda': PretrainIDRiD_LDA,
->>>>>>> 57a4f69eece16dd147b44f7342b633c1b556825a
 }
 
 
@@ -118,32 +105,7 @@ def load_default_transforms(dataset):
             transforms.Normalize(mean=[0.491, 0.482, 0.446],
                                 std=[0.247, 0.243, 0.261]),
         ])
-<<<<<<< HEAD
-    elif dataset in ['mscoco'] or 'meta_' in dataset:
-        mean, std = get_data_mean_and_stdev(dataset)
-        train_transforms = transforms.Compose([
-            transforms.RandomResizedCrop(32, scale=(0.2, 1.)),
-            transforms.RandomApply([
-                transforms.ColorJitter(0.4, 0.4, 0.4, 0.1)  # not strengthened
-            ], p=0.8),
-            transforms.RandomGrayscale(p=0.2),
-            transforms.RandomApply([GaussianBlur([.1, 2.])], p=0.5),
-            transforms.RandomHorizontalFlip(),
-            transforms.ToTensor(),
-            transforms.Normalize(mean=mean, std=std),
-        ])
-        test_transforms = transforms.Compose([
-            transforms.Resize(32),
-            transforms.CenterCrop(32),
-            transforms.ToTensor(),
-            transforms.Normalize(mean=mean, std=std),
-        ])
-   # elif dataset == "mura" or dataset == "pcam" or dataset == "ham" or dataset == "pannuke" or dataset == "drd" or dataset =='idrid':
-
-    elif dataset == 'celeba' or 'ham' in dataset:
-=======
     elif 'idrid' in dataset or 'ham' in dataset or 'pannuke' in dataset:
->>>>>>> 57a4f69eece16dd147b44f7342b633c1b556825a
         train_transforms = transforms.Compose([
             transforms.RandomResizedCrop(32, scale=(0.2, 1.)),
             transforms.RandomApply([
